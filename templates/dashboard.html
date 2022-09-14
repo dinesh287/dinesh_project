@@ -1,0 +1,49 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+    <navbar>
+        <a href="{% url 'handle_logout' %}" class="btn btn-secondary">logout</a>
+        <a class="btn btn-primary" href="{% url 'add_book' %}"><strong>+</strong>add book</a>
+    </navbar>
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message: </strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <table class="table">
+    <thead class="thead dark">
+    <tr>
+        <th scope="col">Book ID</th>
+        <th scope="col">Book Name</th>
+
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+        {% for book in books %}
+
+        <tr>
+            <td>{{ book.book_id }}</td>
+            <td>{{ book.book_name }}</td>
+
+            <td>
+                <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" style="background: transparent; color: black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    choose...
+  </a>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'view_book' book.pk %}">view</a></li>
+      <li><a class="dropdown-item" href="{% url 'update_book' book.pk %}">update</a></li>
+    <li><a class="dropdown-item" href="{% url 'delete_book' book.pk %}">delete</a></li>
+  </ul>
+</div>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

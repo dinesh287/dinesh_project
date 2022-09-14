@@ -1,0 +1,22 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+    <h3 style="color: #33ccff">Book view</h3>
+   <table class="table">
+   <tr>
+       <th scope="col">Book ID</th>
+       <th scope="col">Book Name</th>
+       <th scope="col">Book Author</th>
+       <th scope="col">Book Description</th>
+
+   </tr>
+
+   <tr>
+       <td>{{ book.book_id }}</td>
+       <td>{{ book.book_name }}</td>
+       <td>{{ book.book_author }}</td>
+       <td>{{ book.book_desc }}</td>
+   </tr>
+   </table>
+<a href={% url 'dashboard'%} class="btn btn-secondary">dashboard</a>
+{% endblock %}

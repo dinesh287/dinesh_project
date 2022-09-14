@@ -1,0 +1,18 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+    <div class="container container1">
+     <form action="{% url 'update_book' book.pk %}" method="post">{% csrf_token %}
+        <label for="book_id">Book ID</label>
+        <input type="text" name="book_id" id="book_id" class="form-control" placeholder="enter here..."  required value="{{ book.book_id }}">
+            <label for="book_name">Book Name</label>
+        <input type="text" name="book_name" id="book_name" class="form-control" placeholder="enter here..." required value="{{ book.book_name }}">
+            <label for="book_author">Book Author</label>
+        <input type="text" name="book_author" id="book_author" class="form-control" placeholder="enter here..." required value="{{ book.book_author }}">
+            <label for="book_desc">Book Description</label>
+            <textarea name="book_desc" id="book_desc" cols="30" rows="5" class="form-control">{{ book.book_desc }}</textarea>
+            <button class="btn btn-info" type="submit" style="margin-top: 20px">update</button>
+            <a href="{% url 'dashboard' %}"class="btn btn-secondary">dashboard</a>
+        </form>
+    </div>
+{% endblock %}
